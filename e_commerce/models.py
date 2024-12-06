@@ -7,3 +7,4 @@ class pulseira(models.Model):
     valor = models.DecimalField(max_digits=10, decimal_places=2)
     quantidade = models.PositiveIntegerField(default=0)
 
+
