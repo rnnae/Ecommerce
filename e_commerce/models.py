@@ -5,11 +5,13 @@ from django.contrib.auth.hashers import make_password
 """Tabela Pulseira"""
 
 
-class pulseira(models.Model):
+class Pulseira(models.Model):
     nome = models.CharField(max_length=200)
     valor = models.DecimalField(max_digits=10, decimal_places=2)
     quantidade = models.PositiveIntegerField(default=0)
 
+    def __str__(self):
+        return self.nome
 
 
 class Estado(models.Model):
@@ -22,7 +24,8 @@ class Estado(models.Model):
 
 """Tabela Clientes"""
 
-class clientes(models.Model):
+
+class Cliente(models.Model):
     nome = models.CharField(max_length=200, verbose_name="Nome")
     sobrenome = models.CharField(max_length=200, verbose_name="Sobrenome")
     email = models.EmailField(unique=True, verbose_name="E-mail")
@@ -46,10 +49,9 @@ class clientes(models.Model):
         return f"{self.nome} {self.sobrenome}"
 
 
-
 class Compra(models.Model):
-    clientes = models.ForeignKey(clientes, on_delete=models.CASCADE, verbose_name="Cliente")
-    pulseira = models.ForeignKey(pulseira, on_delete=models.CASCADE, verbose_name="Pulseira")
+    clientes = models.ForeignKey(Cliente, on_delete=models.CASCADE, verbose_name="Cliente")
+    pulseira = models.ForeignKey(Pulseira, on_delete=models.CASCADE, verbose_name="Pulseira")
     quantidade = models.PositiveIntegerField(verbose_name="Quantidade")
     data = models.DateTimeField(auto_now_add=True, verbose_name="Data da compra")
 

@@ -1,0 +1,7 @@
+
+
+<form action="{% url 'new_cliente' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">Adicionar</button>
+</form>
