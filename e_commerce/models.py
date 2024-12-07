@@ -54,7 +54,7 @@ class Compra(models.Model):
     data = models.DateTimeField(auto_now_add=True, verbose_name="Data da compra")
 
     def __str__(self):
-        return f"Compra #{self.id} - {self.cliente} - {self.data}"
+        return f"Compra #{self.id} - {self.clientes} - {self.data}"
 
     @property
     def valor_total(self):
