@@ -1,4 +1,6 @@
 from django import forms
+from django.contrib.auth.hashers import make_password
+
 from .models import Pulseira, Compra, Cliente, Estado
 
 
@@ -20,23 +22,27 @@ class CompraForm(forms.ModelForm):
         labels = {'quantidade': 'Quantidade'}
 
 
-class ClienteForm(forms.Form):
-    nome = forms.CharField(label='Nome', max_length=200)
-    sobrenome = forms.CharField(label='Sobrenome', max_length=200)
-    email = forms.EmailField(label='E-mail')
+class ClienteForm(forms.ModelForm):
     estado = forms.ModelChoiceField(queryset=Estado.objects.all(), label='Estado')
-    endereco = forms.CharField(label='Endereço', widget=forms.Textarea)
-    telefone = forms.CharField(label='Telefone', max_length=15)
-    cpf = forms.CharField(label='CPF', max_length=9)
-    rg = forms.CharField(label='RG', max_length=9)
-    senha = forms.CharField(label='Senha', widget=forms.PasswordInput)
-    confirmar_senha = forms.CharField(label='Confirmar senha', widget=forms.PasswordInput)
 
-    def clean(self):
-        cleaned_data = super().clean()
-        senha = cleaned_data.get('senha')
-        confirmar_senha = cleaned_data.get('confirmar_senha')
+    class Meta:
+        model = Cliente
+        fields = ['nome', 'sobrenome', 'email', 'estado', 'endereco', 'telefone', 'cpf', 'rg', 'senha']
+        labels = {
+            'nome': 'Nome',
+            'sobrenome': 'Sobrenome',
+            'email': 'E-mail',
+            'endereco': 'Endereço',
+            'telefone': 'Telefone',
+            'cpf': 'CPF',
+            'rg': 'RG',
+            'senha': 'Senha'
+        }
+        widgets = {'senha': forms.PasswordInput()}
 
-        if senha != confirmar_senha:
-            raise forms.ValidationError('As senhas não coincidem.')
-        return cleaned_data
+    def save(self, commit=True):
+        cliente = super().save(commit=False)
+        cliente.senha = make_password(self.cleaned_data['senha'])
+        if commit:
+            cliente.save()
+        return cliente
