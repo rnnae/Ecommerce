@@ -1,0 +1,97 @@
+<!doctype html>
+{% load static %}
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'e_commerce/css/indexcss.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300&display=swap" rel="stylesheet">
+      {% load bootstrap5 %}
+      {% bootstrap_css %}
+      {% bootstrap_javascript %}
+</head>
+<style>
+    img .cardsFilho {
+        width: 500px;
+        height: 400px;
+    }
+</style>
+<body>
+<header>
+    <div class="cabeca">
+        <a href="index.html">
+            <h2 class="p-2 font logo1">Roccas</h2>
+        </a>
+    </div>
+</header>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse navIndex" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link iaindex" aria-current="page" href="index.html">Home</a>
+                <a class="nav-link iaindex" href="loja.html">Pulseiras</a>
+                <a class="nav-link iaindex" href="sobre.html">Sobre</a>
+                <a class="nav-link iaindex" href="Feedback.html">Feedback</a>
+                <a class="nav-link iaindex" href="login.html">Entrar</a>
+                <a class="nav-link iaindex" href="cadastro.html">Cadastrar</a>
+                <a class="nav-link iaindex" href="quiz.html">Quiz</a>
+
+            </div>
+        </div>
+        <a href="carrinho.html"><img src="IMAGENS/icons8-carrinho-de-compras-24.png" alt=""></a>
+    </div>
+</nav>
+
+<nav style="background-color: gray; width: 100%; height: 30px; display: flex; justify-content: center;">
+    <p>Pulseiras Exclusivas em Prata de Lei</p>
+</nav>
+{% block content %}
+
+{% endblock content %}
+<footer class="containerFooter">
+    <div class="redesSociais">
+        <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+        <a href=""><i class="fa-brands fa-instagram"></i></a>
+        <a href=""><i class="fa-brands fa-twitter"></i></a>
+        <a href=""><i class="fa-brands fa-facebook"></i></a>
+    </div>
+    <div class="footerNav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="loja.html">Pulseira</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="Feedback.html">Feedback</a></li>
+        </ul>
+    </div>
+</footer>
+<div class="footerCopyright">
+    <p>Copyright &copy;2024; Designed by Matheus Cavallero</p>
+
+
+    <script src="../SITEMAE/JAVASCRIPT/forms.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+            crossorigin="anonymous"></script>
+</body>
+</html>
