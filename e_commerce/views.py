@@ -14,7 +14,7 @@ def index(request):
 def pulseiras(request):
     pulseiras = Pulseira.objects.order_by('nome')
     context = {'pulseiras': pulseiras}
-    return render(request, 'e_commerce/pulseiras.html')
+    return render(request, 'e_commerce/pulseiras.html', context)
 
 
 def new_pulseira(request):

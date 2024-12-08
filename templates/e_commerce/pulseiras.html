@@ -1,0 +1,14 @@
+
+<h1>Pulseiras</h1>
+
+<ul>
+    {% for pulseira in pulseiras %}
+        <li>
+            <p>{{ pulseira.nome }}</p>
+            <p>{{ pulseira.valor }}</p>
+            <p>{{ pulseira.quantidade }}</p>
+        </li>
+    {% empty %}
+        <li>Não há pulseiras cadastradas.</li>
+    {% endfor %}
+</ul>
