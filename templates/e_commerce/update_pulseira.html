@@ -4,9 +4,9 @@
 {% block title %}Pulseiras{% endblock %}
 
 {% block content %}
-    <form action="{% url 'new_pulseira' %}" method="post">
+    <form action="{% url 'update_pulseira' pulseira_id %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button name="submit">Adicionar</button>
+        <button name="submit">Salvar</button>
     </form>
 {% endblock %}

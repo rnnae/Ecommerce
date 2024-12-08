@@ -6,6 +6,6 @@
         <li>{{ pulseira.quantidade }}</li>
         <li>R$ {{ pulseira.valor|floatformat:2 }}</li>
     </ul>
-    <button><a href="">editar</a></button>
-    <button><a href="">excluir</a></button>
+    <button><a href="{% url 'update_pulseira' pulseira.id %}">editar</a></button>
+    <button><a href="{% url 'delete_pulseira' pulseira.id %}">excluir</a></button>
 {% endblock %}

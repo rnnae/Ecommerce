@@ -23,6 +23,25 @@ def show_pulseira(request, pulseira_id):
     return render(request, 'e_commerce/pulseira.html', context)
 
 
+def delete_pulseira(request, pulseira_id):
+    pulseira = Pulseira.objects.get(id=pulseira_id)
+    pulseira.delete()
+    return HttpResponseRedirect(reverse('pulseiras'))
+
+
+def update_pulseira(request, pulseira_id):
+    pulseira = Pulseira.objects.get(id=pulseira_id)
+    if request.method != 'POST':
+        form = PulseiraForm(instance=pulseira)
+    else:
+        form = PulseiraForm(instance=pulseira, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('pulseiras'))
+    context = {'pulseira': pulseira, 'form': form}
+    return render(request, 'e_commerce/update_pulseira.html', context)
+
+
 def new_pulseira(request):
     if request.method != 'POST':
         form = PulseiraForm()
