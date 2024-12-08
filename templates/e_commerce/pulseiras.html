@@ -1,14 +1,19 @@
 
-<h1>Pulseiras</h1>
+{% extends 'e_commerce/base.html' %}
 
-<ul>
-    {% for pulseira in pulseiras %}
-        <li>
-            <p>{{ pulseira.nome }}</p>
-            <p>{{ pulseira.valor }}</p>
-            <p>{{ pulseira.quantidade }}</p>
-        </li>
-    {% empty %}
-        <li>Não há pulseiras cadastradas.</li>
-    {% endfor %}
-</ul>
+{% block title %}Pulseiras{% endblock %}
+
+{% block content %}
+
+    <h1>Pulseiras</h1>
+    
+    <ul>
+        {% for pulseira in pulseiras %}
+            <li>
+                <a href="{% url 'pulseira' pulseira.id %}">{{ pulseira.nome }}</a>
+            </li>
+        {% empty %}
+            <li>Não há pulseiras cadastradas.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

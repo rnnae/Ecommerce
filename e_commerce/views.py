@@ -17,6 +17,12 @@ def pulseiras(request):
     return render(request, 'e_commerce/pulseiras.html', context)
 
 
+def show_pulseira(request, pulseira_id):
+    pulseira = Pulseira.objects.get(id=pulseira_id)
+    context = {'pulseira': pulseira}
+    return render(request, 'e_commerce/pulseira.html', context)
+
+
 def new_pulseira(request):
     if request.method != 'POST':
         form = PulseiraForm()

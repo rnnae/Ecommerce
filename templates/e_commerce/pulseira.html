@@ -1,0 +1,11 @@
+{% extends "e_commerce/base.html" %}
+
+{% block content %}
+    <ul>
+        <li>{{ pulseira.nome }}</li>
+        <li>{{ pulseira.quantidade }}</li>
+        <li>R$ {{ pulseira.valor|floatformat:2 }}</li>
+    </ul>
+    <button><a href="">editar</a></button>
+    <button><a href="">excluir</a></button>
+{% endblock %}
