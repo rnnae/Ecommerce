@@ -30,10 +30,10 @@
       </button>
       <div class="collapse navbar-collapse navIndex" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link iaindex" aria-current="page" href="index.html">Home</a>
-          <a class="nav-link iaindex" href="sobre.html">Cadastro de Pulseiras</a>
-             <a class="nav-link iaindex" href="loja.html">Pulseiras</a>
-          <a class="nav-link iaindex" href="Feedback.html">Cadastro de Clientes</a>
+          <a class="nav-link iaindex" aria-current="page" href="{% url 'index' %}">Home</a>
+          <a class="nav-link iaindex" href="{% url 'new_pulseira' %}">Cadastro de Pulseiras</a>
+             <a class="nav-link iaindex" href="{% url 'pulseiras' %}">Pulseiras</a>
+          <a class="nav-link iaindex" href="{% url 'new_cliente' %}">Cadastro de Clientes</a>
         </div>
       </div>
       <a href="carrinho.html"><img src="IMAGENS/icons8-carrinho-de-compras-24.png" alt=""></a>
@@ -50,10 +50,10 @@
  <footer class="containerFooter">
     <div class="footerNav">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="loja.html">Pulseira</a></li>
-        <li><a href="sobre.html">Cadastro Clientes</a></li>
-        <li><a href="Feedback.html">Cadastro Pulseiras</a></li>
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'pulseiras' %}">Pulseira</a></li>
+        <li><a href="{% url 'new_cliente' %}">Cadastro Clientes</a></li>
+        <li><a href="{% url 'new_pulseira' %}">Cadastro Pulseiras</a></li>
       </ul>
     </div>
   </footer>

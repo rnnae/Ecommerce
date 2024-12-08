@@ -30,7 +30,7 @@ def new_pulseira(request):
         form = PulseiraForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('pulseira'))
+            return HttpResponseRedirect(reverse('pulseiras'))
     context = {'form': form}
     return render(request, 'e_commerce/new_pulseira.html', context)
 

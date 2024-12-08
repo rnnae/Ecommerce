@@ -1,6 +1,12 @@
 
-<form action="{% url 'new_compra' %}" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button name="submit">Adicionar</button>
-</form>
+{% extends "e_commerce/base.html" %}
+
+{% block title %}Pulseiras{% endblock %}
+
+{% block content %}
+    <form action="{% url 'new_compra' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="submit">Adicionar</button>
+    </form>
+{% endblock %}
