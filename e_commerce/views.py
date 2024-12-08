@@ -37,7 +37,7 @@ def update_pulseira(request, pulseira_id):
         form = PulseiraForm(instance=pulseira, data=request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('pulseiras'))
+            return HttpResponseRedirect(reverse('pulseira', args=[pulseira_id]))
     context = {'pulseira': pulseira, 'form': form}
     return render(request, 'e_commerce/update_pulseira.html', context)
 
