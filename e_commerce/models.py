@@ -37,15 +37,6 @@ class Cliente(models.Model):
     rg = models.CharField(max_length=9, unique=True, verbose_name="RG")
     senha = models.CharField(max_length=128, verbose_name="Senha")
 
-    def set_senha(self, raw_password):
-        """Método para criptografar a senha antes de salvar no banco."""
-        self.senha = make_password(raw_password)
-
-    def check_senha(self, raw_password):
-        """Método para verificar a senha criptografada."""
-        from django.contrib.auth.hashers import check_password
-        return check_password(raw_password, self.senha)
-
     def __str__(self):
         return f"{self.nome} {self.sobrenome}"
 
@@ -54,11 +45,13 @@ class Compra(models.Model):
     clientes = models.ForeignKey(Cliente, on_delete=models.CASCADE, verbose_name="Cliente")
     pulseira = models.ForeignKey(Pulseira, on_delete=models.CASCADE, verbose_name="Pulseira")
     quantidade = models.PositiveIntegerField(verbose_name="Quantidade")
+    valor_total = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Valor Total", editable=False)
     data = models.DateTimeField(auto_now_add=True, verbose_name="Data da compra")
 
     def __str__(self):
         return f"Compra #{self.id} - {self.clientes} - {self.data}"
 
-    @property
-    def valor_total(self):
-        return self.quantidade * self.pulseira.valor
+    def save(self, *args, **kwargs):
+        # Calcula o valor total antes de salvar
+        self.valor_total = self.quantidade * self.pulseira.valor
+        super().save(*args, **kwargs)
