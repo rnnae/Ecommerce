@@ -13,11 +13,53 @@
     <link rel="stylesheet" href="{% static 'e_commerce/css/style.css' %}">
 </head>
 <body>
-    
-    {% block content %}
-        
-    {% endblock %}
+<body>
+  <header>
+    <div class="cabeca">
+      <a href="index.html">
+        <h2 class="p-2 font logo1">Roccas</h2>
+      </a>
+    </div>
+  </header>
 
+   <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse navIndex" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link iaindex" aria-current="page" href="index.html">Home</a>
+          <a class="nav-link iaindex" href="sobre.html">Cadastro de Pulseiras</a>
+             <a class="nav-link iaindex" href="loja.html">Pulseiras</a>
+          <a class="nav-link iaindex" href="Feedback.html">Cadastro de Clientes</a>
+        </div>
+      </div>
+      <a href="carrinho.html"><img src="IMAGENS/icons8-carrinho-de-compras-24.png" alt=""></a>
+    </div>
+  </nav>
+  
+   <nav style="background-color: gray; width: 100%; height: 30px; display: flex; justify-content: center;">
+         <p>Pulseiras Exclusivas em Prata de Lei</p>
+  </nav>
+  
+    {% block content %}
+
+    {% endblock %}
+ <footer class="containerFooter">
+    
+    <div class="footerNav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="loja.html">Pulseira</a></li>
+        <li><a href="sobre.html">Cadastro Clientes</a></li>
+        <li><a href="Feedback.html">Cadastro Pulseiras</a></li>
+      </ul>
+    </div>
+  </footer>
+  <div class="footerCopyright">
+    <p>Copyright &copy;2024; Designed by Matheus Cavallero</p>
 </body>
 </html>
 
