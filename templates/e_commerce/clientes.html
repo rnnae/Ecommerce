@@ -1,0 +1,10 @@
+{% extends 'e_commerce/base.html' %}
+
+{% block content %}
+    <h1>Clientes</h1>
+
+    {% for cliente in clientes %}
+        <a href="{% url 'cliente' cliente.id %}">{{ cliente.nome }}</a>
+        <br>
+    {% endfor %}
+{% endblock %}

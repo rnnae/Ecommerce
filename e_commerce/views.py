@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.shortcuts import render
 
 from e_commerce.forms import PulseiraForm, CompraForm, ClienteForm
-from e_commerce.models import Pulseira
+from e_commerce.models import Pulseira, Compra, Cliente
 
 
 # Create your views here.
@@ -54,6 +54,42 @@ def new_pulseira(request):
     return render(request, 'e_commerce/new_pulseira.html', context)
 
 
+def new_cliente(request):
+    if request.method != 'POST':
+        form = ClienteForm()
+    else:
+        form = ClienteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('index'))
+    context = {'form': form}
+    return render(request, 'e_commerce/new_cliente.html', context)
+
+
+def show_clientes(request):
+    clientes = Cliente.objects.order_by('nome')
+    context = {'clientes': clientes}
+    return render(request, 'e_commerce/clientes.html', context)
+
+
+def update_cliente(request, cliente_id):
+    cliente = Cliente.objects.get(id=cliente_id)
+    if request.method != 'POST':
+        form = ClienteForm(instance=cliente)
+    else:
+        form = ClienteForm(instance=cliente, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('clientes'))
+    context = {'cliente': cliente, 'form': form}
+    return render(request, 'e_commerce/update_cliente.html', context)
+
+
+def delete_cliente(request,cliente_id):
+    cliente = Cliente.objects.get(id=cliente_id)
+    cliente.delete()
+    return HttpResponseRedirect(reverse('clientes'))
+
 def new_compra(request):
     if request.method != 'POST':
         form = CompraForm()
@@ -66,13 +102,10 @@ def new_compra(request):
     return render(request, 'e_commerce/new_compra.html', context)
 
 
-def new_cliente(request):
-    if request.method != 'POST':
-        form = ClienteForm()
-    else:
-        form = ClienteForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(reverse('index'))
-    context = {'form': form}
-    return render(request, 'e_commerce/new_cliente.html', context)
+def relatorio_compras(request):
+    compras = Compra.objects.order_by('data')
+    total = 0
+    for compra in compras:
+        total += compra.valor_total
+    context = {'compras': compras, 'total': total}
+    return render(request, 'e_commerce/relatorio_compras.html', context)

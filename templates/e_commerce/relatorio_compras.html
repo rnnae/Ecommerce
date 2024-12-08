@@ -1,0 +1,30 @@
+{% extends 'e_commerce/base.html' %}
+{% load l10n %}
+
+
+{% block content %}
+    
+    <h1>Relatório de Compras</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Cliente</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for compra in compras %}
+                <tr>
+                    <td>{{ compra.pulseira.nome }}</td>
+                    <td>{{ compra.quantidade }}</td>
+                    <td>{{ compra.cliente.nome }}</td>
+                    <td>{{ compra.valor_total|localize }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p>Valor total: {{ total|localize }}</p>
+    
+{% endblock %}

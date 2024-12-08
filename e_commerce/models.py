@@ -42,16 +42,16 @@ class Cliente(models.Model):
 
 
 class Compra(models.Model):
-    clientes = models.ForeignKey(Cliente, on_delete=models.CASCADE, verbose_name="Cliente")
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, verbose_name="Cliente")
     pulseira = models.ForeignKey(Pulseira, on_delete=models.CASCADE, verbose_name="Pulseira")
     quantidade = models.PositiveIntegerField(verbose_name="Quantidade")
-    valor_total = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Valor Total", editable=False)
+    valor_total = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Valor Total", editable=False, default=0)
     data = models.DateTimeField(auto_now_add=True, verbose_name="Data da compra")
 
     def __str__(self):
-        return f"Compra #{self.id} - {self.clientes} - {self.data}"
+        return f"Compra #{self.id} - {self.cliente} - {self.data}"
 
     def save(self, *args, **kwargs):
-        # Calcula o valor total antes de salvar
+        # Calcula o valor total antes de salvar2
         self.valor_total = self.quantidade * self.pulseira.valor
         super().save(*args, **kwargs)
