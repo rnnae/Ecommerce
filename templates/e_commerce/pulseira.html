@@ -2,6 +2,7 @@
 
 {% block content %}
     <ul>
+        <li><img src="{{ pulseira.imagem.url }}"></li>
         <li>{{ pulseira.nome }}</li>
         <li>{{ pulseira.quantidade }}</li>
         <li>R$ {{ pulseira.valor|floatformat:2 }}</li>

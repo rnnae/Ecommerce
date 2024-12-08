@@ -7,13 +7,16 @@
 
     <h1>Pulseiras</h1>
     
-    <ul>
-        {% for pulseira in pulseiras %}
-            <li>
-                <a href="{% url 'pulseira' pulseira.id %}">{{ pulseira.nome }}</a>
-            </li>
-        {% empty %}
-            <li>Não há pulseiras cadastradas.</li>
-        {% endfor %}
-    </ul>
+
+    {% for pulseira in pulseiras %}
+        <div>
+            <a href="{% url 'pulseira' pulseira.id %}">
+                <img src="{{ pulseira.imagem.url }}" alt="">
+                <p>{{ pulseira.nome }}</p>
+            </a>
+        </div>
+    {% empty %}
+        <li>Não há pulseiras cadastradas.</li>
+    {% endfor %}
+
 {% endblock %}
