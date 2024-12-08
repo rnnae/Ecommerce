@@ -46,7 +46,7 @@ def new_pulseira(request):
     if request.method != 'POST':
         form = PulseiraForm()
     else:
-        form = PulseiraForm(request.POST)
+        form = PulseiraForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse('pulseiras'))

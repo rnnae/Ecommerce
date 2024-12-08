@@ -9,6 +9,7 @@ class Pulseira(models.Model):
     nome = models.CharField(max_length=200)
     valor = models.DecimalField(max_digits=10, decimal_places=2)
     quantidade = models.PositiveIntegerField(default=0)
+    imagem = models.ImageField(upload_to='pulseiras/', verbose_name="Imagem", null=True, blank=True)
 
     def __str__(self):
         return self.nome

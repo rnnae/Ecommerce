@@ -7,8 +7,8 @@ from .models import Pulseira, Compra, Cliente, Estado
 class PulseiraForm(forms.ModelForm):
     class Meta:
         model = Pulseira
-        fields = ['nome', 'valor', 'quantidade']
-        labels = {'nome': 'Nome', 'valor': 'Valor', 'quantidade': 'Quantidade'}
+        fields = ['nome', 'valor', 'quantidade', 'imagem']
+        labels = {'nome': 'Nome', 'valor': 'Valor', 'quantidade': 'Quantidade', 'imagem': 'Imagem'}
         widgets = {'valor': forms.NumberInput(attrs={'step': '0.01'})}
 
 
