@@ -1,26 +1,41 @@
 {% extends "e_commerce/base.html" %}
 {% load l10n %}
 
+{% block extra_styles %}
+    {% load static %}
+	<link rel="stylesheet" href="{% static 'e_commerce/css/footer.css' %}">
+{% endblock %}
+
 {% block content %}
-<h1 style="text-align: center; font-size: 2.5rem; margin: 20px 0; color: #2c3e50; font-family: 'Playfair Display', serif;">Detalhes da Pulseira</h1>
 
-<div style="display: flex; flex-direction: column; align-items: center; max-width: 400px; margin: 0 auto; padding: 30px; background-color: #ffffff; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);">
-    <div style="width: 100%; height: 250px; overflow: hidden; border-radius: 10px; margin-bottom: 20px;">
-        <img src="{{ pulseira.imagem.url }}" alt="{{ pulseira.nome }}" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-    </div>
-    <ul style="list-style: none; padding: 0; margin: 0; text-align: center; width: 100%; font-family: 'Arial', sans-serif; color: #34495e;">
-        <li style="font-size: 1.7rem; font-weight: bold; margin-bottom: 10px;">{{ pulseira.nome }}</li>
-        <li style="font-size: 1.2rem; margin-bottom: 10px;">Quantidade: {{ pulseira.quantidade }}</li>
-        <li style="font-size: 1.2rem; margin-bottom: 20px;">Preço: R$ {{ pulseira.valor|localize }}</li>
+        <div>
+		  <div class="containermth">
+		    <div style="width: 15%;" class="cardsPai">
+              <div style="border-width: 6px; border-style: solid; border-color: dimgray;" class="cardsFilho">
+                <img height="200vw" width="50vw" src="{{ pulseira.imagem.url }}" alt="">
+			  </div>
+              <h2  class="text-center" style="font-family: 'Cambria', sans-serif; font-size: 32px; margin-top: 0.2em;">{{ pulseira.nome }}</h2>
+			  <h3  class="text-center" style="font-family: 'Cambria', sans-serif; font-size: 18px; margin-top: 0.2em;">{{ pulseira.quantidade }} Unidade(s)</h2>
+			  <h3  class="text-center" style="font-family: 'Cambria', sans-serif; font-size: 18px; margin-top: 0.2em;">R$ {{ pulseira.valor|localize }}</h2>
+			  <button class="btn btn-primary submit-button" style="margin-bottom: 0.2em"><a style="color: white;" href="{% url 'update_pulseira' pulseira.id %}">Editar</a></button>
+              <button class="btn btn-primary submit-button" style="margin-bottom: 0.2em"><a style="color: white;" href="{% url 'delete_pulseira' pulseira.id %}">Excluir</a></button>
+              <button class="btn btn-primary submit-button" style="margin-bottom: 0.2em"><a style="color: white;" href="{% url 'new_compra' pulseira.id %}">Comprar</a></button>
+		    </div>
+	      </div>
+        </div>
+
+<!--
+    <ul>
+	    {% if pulseira.imagem %}
+            <li><img height="200vw" src="{{ pulseira.imagem.url }}" alt=""></li>
+		{% else %}
+		{% endif %}
+        <li>{{ pulseira.nome }}</li>
+        <li>{{ pulseira.quantidade }}</li>
+        <li>R$ {{ pulseira.valor|localize }}</li>
     </ul>
-    <div style="display: flex; justify-content: space-between; gap: 10px; margin-top: 20px; width: 100%;">
-        <a href="{% url 'update_pulseira' pulseira.id %}" style="text-decoration: none; color: #2c3e50; background-color: #f0f0f0; padding: 10px 20px; font-size: 1rem; font-weight: bold; border-radius: 5px; text-align: center; display: block; flex: 1; border: 1px solid #ddd;">Editar</a>
-        <a href="{% url 'delete_pulseira' pulseira.id %}" style="text-decoration: none; color: #2c3e50; background-color: #f0f0f0; padding: 10px 20px; font-size: 1rem; font-weight: bold; border-radius: 5px; text-align: center; display: block; flex: 1; border: 1px solid #ddd;">Excluir</a>
-        <a href="{% url 'new_compra' pulseira.id %}" style="text-decoration: none; color: #2c3e50; background-color: #f0f0f0; padding: 10px 20px; font-size: 1rem; font-weight: bold; border-radius: 5px; text-align: center; display: block; flex: 1; border: 1px solid #ddd;">Comprar</a>
-    </div>
-</div>
-
-<!-- Espaço entre o conteúdo e o footer -->
-<div style="margin-top: 50px;"></div>
-
+    <button><a href="{% url 'update_pulseira' pulseira.id %}">editar</a></button>
+    <button><a href="{% url 'delete_pulseira' pulseira.id %}">excluir</a></button>
+    <button><a href="{% url 'new_compra' pulseira.id %}">comprar</a></button>
+-->	
 {% endblock %}

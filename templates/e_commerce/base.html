@@ -11,6 +11,8 @@
     {% bootstrap_javascript %}
     {% load static %}
     <link rel="stylesheet" href="{% static 'e_commerce/css/style.css' %}">
+	{% block extra_styles %}
+    {% endblock %}
 </head>
 <body>
 <body>
@@ -59,7 +61,7 @@
       </ul>
     </div>
   </footer> -->
-  <div class="footerCopyright">
+  <div style="bottom: 0;" class="footerCopyright">
     <p>Copyright &copy;2024; Designed by: Matheus Cavallero, Renan Carvalho, João Gabriel Aragão and Arthur Nicolau.</p>
 </body>
 </html>

@@ -1,0 +1,28 @@
+
+{% extends 'e_commerce/base.html' %}
+{% load static %}
+
+{% block title %}Pulseira Pérolas{% endblock %}
+
+{% block content %}
+
+    <h1 style="margin-left:2em; margin-bottom:-0.20em; font-family: 'Cambria', sans-serif; color: gray; font-style: italic;">Pulseira Pérolas</h1>
+	
+	<nav style="background-color: gray; width: 100%; height: 30px; display: flex; justify-content: center;">
+    </nav>
+	
+	<div style="display: flex; justify-content: space-between; align-items: center; padding: 2vw; margin-left: 2em;">
+	
+    <!-- Imagem da pulseira -->
+    <div style="flex: 1; max-width: 40%; margin-right: 20px;">
+        <img style="width: 100%; height: auto; border-radius: 8px;" src="{% static 'e_commerce/img/Pulseira1.jpeg'%}" alt="">
+    </div>
+        
+    <!-- Descrição da pérola -->
+    <div style="flex: 1; max-width: 50%; padding: 20px; background-color: #f9f9f9; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin-right: 2em;">
+        <h2 style="font-family: 'Cambria', sans-serif; font-size: 36px;">A Pulseira Pérola</h2>
+        <p style="font-family: 'Cambria', sans-serif; font-size: 24px;">Ela é feita de material de alta qualidade, com acabamento refinado, ideal para ocasiões especiais. Seu brilho intenso e formato perfeito são alguns dos atrativos desta peça incrível.</p>
+    </div>
+    </div>
+	
+{% endblock %}

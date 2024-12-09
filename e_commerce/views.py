@@ -1,6 +1,6 @@
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 
 from e_commerce.forms import PulseiraForm, CompraForm, ClienteForm
 from e_commerce.models import Pulseira, Compra, Cliente
@@ -17,10 +17,9 @@ def pulseiras(request):
     return render(request, 'e_commerce/pulseiras.html', context)
 
 
-def show_pulseira(request, pulseira_id):
-    pulseira = Pulseira.objects.get(id=pulseira_id)
-    context = {'pulseira': pulseira}
-    return render(request, 'e_commerce/pulseira.html', context)
+def show_pulseira(request, id):
+    pulseira = get_object_or_404(Pulseira, id=id)
+    return render(request, 'e_commerce/pulseira.html', {'pulseira': pulseira})
 
 
 def delete_pulseira(request, pulseira_id):
@@ -48,8 +47,8 @@ def new_pulseira(request):
     else:
         form = PulseiraForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(reverse('pulseiras'))
+            Pulseira = form.save()
+            return redirect('pulseira', id=Pulseira.id)
     context = {'form': form}
     return render(request, 'e_commerce/new_pulseira.html', context)
 
@@ -112,3 +111,15 @@ def relatorio_compras(request):
         total += compra.valor_total
     context = {'compras': compras, 'total': total}
     return render(request, 'e_commerce/relatorio_compras.html', context)
+    
+def pulseira_perola(request):
+    return render(request, 'e_commerce/pulseira_perola.html')
+    
+def pulseira_labradorita(request):
+    return render(request, 'e_commerce/pulseira_labradorita.html')
+    
+def pulseira_apatita(request):
+    return render(request, 'e_commerce/pulseira_apatita.html')
+    
+def pulseira_em_prata(request):
+    return render(request, 'e_commerce/pulseira_em_prata.html')

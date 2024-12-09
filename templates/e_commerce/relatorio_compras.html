@@ -1,39 +1,38 @@
 {% extends 'e_commerce/base.html' %}
 {% load l10n %}
 
-{% block content %}
-<h1 style="text-align: center; font-size: 2.5rem; margin: 20px 0; color: #2c3e50; font-family: 'Playfair Display', serif;">Relatório de Compras</h1>
+{% block extra_styles %}
+    {% load static %}
+	<link rel="stylesheet" href="{% static 'e_commerce/css/footer.css' %}">
+{% endblock %}
 
-<div style="max-width: 900px; margin: 0 auto; padding: 20px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);">
-    <table style="width: 100%; border-collapse: collapse; font-family: 'Arial', sans-serif;">
+{% block content %}
+    
+	<h1 style="margin-left:2em; margin-bottom:-0.20em; font-family: 'Cambria', sans-serif; color: gray; font-style: italic;">Relatório de Compras</h1>
+	
+	<nav style="background-color: gray; width: 100%; height: 30px; display: flex; justify-content: center; margin-bottom:1em;">
+    </nav>
+	
+    <table class="table table-striped">
         <thead>
-            <tr style="background-color: #c0c0c0; color: #ffffff;">
-                <th style="padding: 10px; border-bottom: 2px solid #ddd; text-align: left;">Produto</th>
-                <th style="padding: 10px; border-bottom: 2px solid #ddd; text-align: left;">Quantidade</th>
-                <th style="padding: 10px; border-bottom: 2px solid #ddd; text-align: left;">Cliente</th>
-                <th style="padding: 10px; border-bottom: 2px solid #ddd; text-align: left;">Total</th>
+            <tr>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Cliente</th>
+                <th>Total</th>
             </tr>
         </thead>
         <tbody>
             {% for compra in compras %}
-                <tr style="border-bottom: 1px solid #ddd;">
-                    <td style="padding: 10px;">{{ compra.pulseira.nome }}</td>
-                    <td style="padding: 10px;">{{ compra.quantidade }}</td>
-                    <td style="padding: 10px;">{{ compra.cliente.nome }}</td>
-                    <td style="padding: 10px;">R$ {{ compra.valor_total|localize }}</td>
-                </tr>
-            {% empty %}
                 <tr>
-                    <td colspan="4" style="padding: 20px; text-align: center; color: #7f8c8d;">Nenhuma compra foi registrada.</td>
+                    <td>{{ compra.pulseira.nome }}</td>
+                    <td>{{ compra.quantidade }}</td>
+                    <td>{{ compra.cliente.nome }}</td>
+                    <td>{{ compra.valor_total|localize }}</td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
+    <p style="margin-left:0.6em;">Valor total: {{ total|localize }}</p>
     
-    <p style="font-size: 1.2rem; font-weight: bold; text-align: right; margin-top: 20px; color: #2c3e50;">Valor total: R$ {{ total|localize }}</p>
-</div>
-
-<!-- Espaço entre o conteúdo e o footer -->
-<div style="margin-bottom: 550px;"></div>
-
 {% endblock %}

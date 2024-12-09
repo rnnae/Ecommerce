@@ -1,35 +1,22 @@
 {% extends 'e_commerce/base.html' %}
 
+{% block extra_styles %}
+    {% load static %}
+	<link rel="stylesheet" href="{% static 'e_commerce/css/footer.css' %}">
+{% endblock %}
+
 {% block content %}
-<h1 style="text-align: center; font-size: 2.5rem; margin: 20px 0; color: #2c3e50; font-family: 'Playfair Display', serif;">Clientes</h1>
+    <h1 style="margin-left:2em; margin-bottom:-0.20em; font-family: 'Cambria', sans-serif; color: gray; font-style: italic;">Clientes</h1>
+	
+	<nav style="background-color: gray; width: 100%; height: 30px; display: flex; justify-content: center; margin-bottom:1em;">
+    </nav>
 
-<div style="max-width: 800px; margin: 0 auto; padding: 20px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);">
-    <table style="width: 100%; border-collapse: collapse; font-family: 'Arial', sans-serif;">
-        <thead>
-            <tr style="background-color: #d3d3d3; color: #ffffff; text-align: left;">
-                <th style="padding: 10px; border-bottom: 2px solid #ddd;">ID</th>
-                <th style="padding: 10px; border-bottom: 2px solid #ddd;">Nome</th>
-                <th style="padding: 10px; border-bottom: 2px solid #ddd;">Detalhes</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for cliente in clientes %}
-                <tr style="border-bottom: 1px solid #ddd;">
-                    <td style="padding: 10px;">{{ cliente.id }}</td>
-                    <td style="padding: 10px;">{{ cliente.nome }}</td>
-                    <td style="padding: 10px;">
-                        <a href="{% url 'cliente' cliente.id %}" style="text-decoration: none; color: #007BFF; font-weight: bold;">Ver</a>
-                    </td>
-                </tr>
-            {% empty %}
-                <tr>
-                    <td colspan="3" style="padding: 10px; text-align: center; color: #7f8c8d;">Nenhum cliente cadastrado.</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
-
-<!-- Espaço entre o conteúdo e o footer -->
-<div style="margin-bottom: 550px;"></div>
+    {% for cliente in clientes %}
+        <a style="color: black;" href="{% url 'cliente' cliente.id %}">
+		<u>
+		<h2 style="font-family: 'Cambria', sans-serif; font-size: 32px; text-align: left; margin-left: 0.8em; margin-bottom:-0.5em;">{{ cliente.nome }}</h2>
+		</u>
+		</a>
+        <br>
+    {% endfor %}
 {% endblock %}

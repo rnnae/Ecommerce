@@ -1,0 +1,25 @@
+
+.footerCopyright {
+    background-color: rgb(62, 62, 62);
+    padding: 10px;
+    text-align: center;
+	width: 100%;
+	position: absolute;
+}
+
+/* Botão de envio */
+.submit-button {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 18px;
+    background-color: gray;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: black;
+}
