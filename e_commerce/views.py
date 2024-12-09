@@ -90,15 +90,18 @@ def delete_cliente(request,cliente_id):
     cliente.delete()
     return HttpResponseRedirect(reverse('clientes'))
 
-def new_compra(request):
+def new_compra(request, pulseira_id):
+    pulseira = Pulseira.objects.get(id=pulseira_id)
     if request.method != 'POST':
-        form = CompraForm()
+        form = CompraForm(initial={'pulseira': pulseira})
     else:
         form = CompraForm(request.POST)
         if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(reverse('index'))
-    context = {'form': form}
+            compra = form.save(commit=False)
+            compra.pulseira = pulseira
+            compra.save()
+            return HttpResponseRedirect(reverse('pulseiras'))
+    context = {'form': form, 'pulseira': pulseira}
     return render(request, 'e_commerce/new_compra.html', context)
 
 

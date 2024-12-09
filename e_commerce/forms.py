@@ -14,13 +14,11 @@ class PulseiraForm(forms.ModelForm):
 
 class CompraForm(forms.ModelForm):
     cliente = forms.ModelChoiceField(queryset=Cliente.objects.all(), label='Cliente')
-    pulseira = forms.ModelChoiceField(queryset=Pulseira.objects.all(), label='Pulseira')
 
     class Meta:
         model = Compra
-        fields = ['cliente', 'pulseira', 'quantidade']
+        fields = ['cliente', 'quantidade']
         labels = {'quantidade': 'Quantidade'}
-
 
 class ClienteForm(forms.ModelForm):
     estado = forms.ModelChoiceField(queryset=Estado.objects.all(), label='Estado')
