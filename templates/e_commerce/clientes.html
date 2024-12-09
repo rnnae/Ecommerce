@@ -1,10 +1,35 @@
 {% extends 'e_commerce/base.html' %}
 
 {% block content %}
-    <h1>Clientes</h1>
+<h1 style="text-align: center; font-size: 2.5rem; margin: 20px 0; color: #2c3e50; font-family: 'Playfair Display', serif;">Clientes</h1>
 
-    {% for cliente in clientes %}
-        <a href="{% url 'cliente' cliente.id %}">{{ cliente.nome }}</a>
-        <br>
-    {% endfor %}
+<div style="max-width: 800px; margin: 0 auto; padding: 20px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);">
+    <table style="width: 100%; border-collapse: collapse; font-family: 'Arial', sans-serif;">
+        <thead>
+            <tr style="background-color: #d3d3d3; color: #ffffff; text-align: left;">
+                <th style="padding: 10px; border-bottom: 2px solid #ddd;">ID</th>
+                <th style="padding: 10px; border-bottom: 2px solid #ddd;">Nome</th>
+                <th style="padding: 10px; border-bottom: 2px solid #ddd;">Detalhes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in clientes %}
+                <tr style="border-bottom: 1px solid #ddd;">
+                    <td style="padding: 10px;">{{ cliente.id }}</td>
+                    <td style="padding: 10px;">{{ cliente.nome }}</td>
+                    <td style="padding: 10px;">
+                        <a href="{% url 'cliente' cliente.id %}" style="text-decoration: none; color: #007BFF; font-weight: bold;">Ver</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3" style="padding: 10px; text-align: center; color: #7f8c8d;">Nenhum cliente cadastrado.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Espaço entre o conteúdo e o footer -->
+<div style="margin-bottom: 550px;"></div>
 {% endblock %}

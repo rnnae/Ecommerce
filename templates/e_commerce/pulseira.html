@@ -2,13 +2,25 @@
 {% load l10n %}
 
 {% block content %}
-    <ul>
-        <li><img src="{{ pulseira.imagem.url }}" alt=""></li>
-        <li>{{ pulseira.nome }}</li>
-        <li>{{ pulseira.quantidade }}</li>
-        <li>R$ {{ pulseira.valor|localize }}</li>
+<h1 style="text-align: center; font-size: 2.5rem; margin: 20px 0; color: #2c3e50; font-family: 'Playfair Display', serif;">Detalhes da Pulseira</h1>
+
+<div style="display: flex; flex-direction: column; align-items: center; max-width: 400px; margin: 0 auto; padding: 30px; background-color: #ffffff; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);">
+    <div style="width: 100%; height: 250px; overflow: hidden; border-radius: 10px; margin-bottom: 20px;">
+        <img src="{{ pulseira.imagem.url }}" alt="{{ pulseira.nome }}" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    </div>
+    <ul style="list-style: none; padding: 0; margin: 0; text-align: center; width: 100%; font-family: 'Arial', sans-serif; color: #34495e;">
+        <li style="font-size: 1.7rem; font-weight: bold; margin-bottom: 10px;">{{ pulseira.nome }}</li>
+        <li style="font-size: 1.2rem; margin-bottom: 10px;">Quantidade: {{ pulseira.quantidade }}</li>
+        <li style="font-size: 1.2rem; margin-bottom: 20px;">Preço: R$ {{ pulseira.valor|localize }}</li>
     </ul>
-    <button><a href="{% url 'update_pulseira' pulseira.id %}">editar</a></button>
-    <button><a href="{% url 'delete_pulseira' pulseira.id %}">excluir</a></button>
-    <button><a href="{% url 'new_compra' pulseira.id %}">comprar</a></button>
+    <div style="display: flex; justify-content: space-between; gap: 10px; margin-top: 20px; width: 100%;">
+        <a href="{% url 'update_pulseira' pulseira.id %}" style="text-decoration: none; color: #2c3e50; background-color: #f0f0f0; padding: 10px 20px; font-size: 1rem; font-weight: bold; border-radius: 5px; text-align: center; display: block; flex: 1; border: 1px solid #ddd;">Editar</a>
+        <a href="{% url 'delete_pulseira' pulseira.id %}" style="text-decoration: none; color: #2c3e50; background-color: #f0f0f0; padding: 10px 20px; font-size: 1rem; font-weight: bold; border-radius: 5px; text-align: center; display: block; flex: 1; border: 1px solid #ddd;">Excluir</a>
+        <a href="{% url 'new_compra' pulseira.id %}" style="text-decoration: none; color: #2c3e50; background-color: #f0f0f0; padding: 10px 20px; font-size: 1rem; font-weight: bold; border-radius: 5px; text-align: center; display: block; flex: 1; border: 1px solid #ddd;">Comprar</a>
+    </div>
+</div>
+
+<!-- Espaço entre o conteúdo e o footer -->
+<div style="margin-top: 50px;"></div>
+
 {% endblock %}

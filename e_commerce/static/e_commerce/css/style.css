@@ -210,67 +210,10 @@ a:hover i {
 
 /* Cadastrar Pulseiras */
 /* Centralizar o formulário */
-.form-container {
-    max-width: 500px;
-    margin: 50px auto;
-    background-color: #f8f9fa;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    font-family: 'Montserrat', sans-serif;
-}
-
-/* Título do formulário */
-.form-title {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #343a40;
-}
-
-/* Estilo do formulário */
-.styled-form input[type="text"],
-.styled-form input[type="email"],
-.styled-form input[type="password"],
-.styled-form input[type="number"],
-.styled-form select,
-.styled-form textarea {
-    width: 100%;
-    padding: 10px 15px;
-    margin-bottom: 15px;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: all 0.3s ease;
-}
 
 
-.styled-form input[type="text"]:focus,
-.styled-form input[type="email"]:focus,
-.styled-form input[type="password"]:focus,
-.styled-form input[type="number"]:focus,
-.styled-form select:focus,
-.styled-form textarea:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.8);
-    outline: none;
-}
 
-/* Botão de envio */
-.submit-button {
-    width: 100%;
-    padding: 10px 0;
-    font-size: 18px;
-    background-color: gray;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
 
-.submit-button:hover {
-    background-color: black;
-}
 
-/* Cadastrar Clientes */
+
+
